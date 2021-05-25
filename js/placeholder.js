@@ -30,18 +30,43 @@ function updateVelocity(sprite, angle, velocity){
 }
 
 
-function createRainSprite(colour = 0xffffff, heigth = 16, width = 2);
+function createRainSprite(colour = 0xffffff,x = 0, y = -5, heigth = 16, width = 2);
 {
 	sprite = new PIXI.Sprite(PIXI.Texture.WHITE);
+	sprite.x = x;
+	sprite.y = y;
 	sprite.height = height;
 	sprite.width = width;
+	
 	sprite.tint = colour;
 	sprite.anchor.x = sprite.anchor.y = 0.5;
 
+	sprite.v = sprite.vx = sprite.vy = 0;
 }
+
+let spriteArray = new Array();
+function createSpriteArray(n){
+  for(let i = 0; i < n; i++)
+  {
+    spriteArray.push(createRainSprite(x = getRandomInt(0,600)));
+  }
+}
+
+
 function gameLoop(delta) {
 
+  for(let i = 0; i < spriteArray.length; i++){
+  	if(spriteArray[i].y > app.renderer.height + 10){
+      spriteArray[i].y = -5;
+      spriteArray[i].x = getRandomInt(0,600);
+  	}
+  }
 }
 
 const degToRad = (deg) => deg*Math.PI/180;
 const radToDeg = (rad) => rad*180/Math.PI;
+
+// random integer in [min,max]
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
