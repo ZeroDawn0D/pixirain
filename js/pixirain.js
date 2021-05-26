@@ -101,12 +101,13 @@ export let app = new PIXI.Application({
   backgroundColor: 0x000000
 });
 
-app.renderer.view.style.position = "absolute";
-app.renderer.view.style.display = "block";
-app.renderer.autoResize = true;
+
 
 
 //adds gameLoop() to app.ticker()
 export function startRain(){
-	app.ticker.add(delta => gameLoop(delta))
+  app.renderer.view.style.position = "absolute";
+  app.renderer.view.style.display = "block";
+  app.renderer.autoResize = true;
+  app.ticker.add(delta => gameLoop(delta))
 }

@@ -1,5 +1,5 @@
 import {createSpriteArray, startRain, app} from "./pixirain.js"
-
+import {setupUI} from "./ui.js";
 
 document.body.appendChild(app.view);
 let number = 4096;
@@ -8,7 +8,9 @@ let rainH = 32;
 let rainW = 1;
 let dAngle = 60;
 let velocity = 15;
+setupUI(app);
 createSpriteArray(number, colour, rainH, rainW, dAngle, velocity);
+
 startRain();
 
 
