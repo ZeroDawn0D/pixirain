@@ -1,20 +1,21 @@
-import {createSpriteArray, startRain, app, createBackground} from "./pixirain.js"
-import {setupUI} from "./ui.js";
+import * as RAIN from "./rain.js"
+import * as UI from "./ui.js";
 
 //document.body.appendChild(app.view);
-let bgColour = 0x555555;
-createBackground(bgColour);
-
+let bgColour = 0x000000;
 let number = 4096;
 let colour = 0xffffff;
 let rainH = 32;
 let rainW = 1;
 let dAngle = 30;
 let velocity = 15;
-setupUI(app);
-createSpriteArray(number, colour, rainH, rainW, dAngle, velocity);
+let alpha = 0.2;
 
-startRain();
+
+RAIN.createBackground(bgColour);
+UI.setupUI(RAIN.app);
+RAIN.createSpriteArray(number, colour, rainH, rainW, dAngle, velocity, alpha);
+RAIN.startRain();
 
 
 
