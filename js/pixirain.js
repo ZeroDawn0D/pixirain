@@ -40,14 +40,19 @@ function createRainSprite(colour, x, y, height, width, rAngle, velocity){
 
 	sprite.v = sprite.vx = sprite.vy = 0;
 	sprite.rotation = rAngle;
+	//console.log(radToDeg(sprite.rotation));
 	updateVelocity(sprite, rAngle, velocity);
+	sprite.alpha = 0.1;
+	
 
 	return sprite;
+
 }
 
 //create sprite array of size n
 let spriteArray = new Array();
 export function createSpriteArray(n = 2048, colour = 0x00ffff, height = 16, width = 1, dAngle = 0, velocity = 2){
+  //console.log(dAngle);
   let rAngle = degToRad(dAngle);
   let leftLim = 0;
   let rightLim = wiw;
@@ -95,12 +100,18 @@ function gameLoop(delta) {
 }
 
 
-export let app = new PIXI.Application({
-  width: wiw, 
-  height: wih,
-  backgroundColor: 0x000000
-});
+export let app;
 
+export function createBackground(bgColour){
+  app = new PIXI.Application({
+    width: wiw, 
+    height: wih,
+    backgroundColor: bgColour,
+    antialias: true
+  });
+
+  document.body.appendChild(app.view);
+}
 
 
 
