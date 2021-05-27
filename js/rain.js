@@ -121,5 +121,7 @@ export function startRain(){
   app.renderer.view.style.position = "absolute";
   app.renderer.view.style.display = "block";
   app.renderer.autoResize = true;
+  //delete PIXI.Renderer.__plugins.interaction;
+  
   app.ticker.add(delta => gameLoop(delta))
 }
