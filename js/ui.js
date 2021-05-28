@@ -26,6 +26,9 @@ function onMenuIconLoad(){
     .on('pointerup', onUnclickMenu)
     .on('pointerdown', onClickMenu);
   //app.ticker.add(delta => gameLoop(delta))
+
+  document.getElementById("menu").style.height = window.innerHeight;
+  document.getElementById("menu").style.width = window.innerWidth * 0.50;
   
 }
 
