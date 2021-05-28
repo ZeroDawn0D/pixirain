@@ -34,16 +34,16 @@ function createRainSprite(colour, x, y, height, width, rAngle, velocity, alpha){
 	sprite.y = y;
 	sprite.height = height;
 	sprite.width = width;
-	
+	sprite.alpha = alpha;
 	sprite.tint = colour;
 	sprite.anchor.x = sprite.anchor.y = 0.5;
 
 	sprite.v = sprite.vx = sprite.vy = 0;
 	sprite.rotation = rAngle;
-	//console.log(radToDeg(sprite.rotation));
+	//console.log(velocity);
 	updateVelocity(sprite, rAngle, velocity);
-	sprite.alpha = alpha;
 	
+	//console.log(sprite);
 
 	return sprite;
 
@@ -51,34 +51,37 @@ function createRainSprite(colour, x, y, height, width, rAngle, velocity, alpha){
 
 //create sprite array of size n
 let spriteArray = new Array();
-export function createSpriteArray(n = 2048, colour = 0x00ffff, height = 16, width = 1, dAngle = 0, velocity = 2, alpha = 0.2){
-  //console.log(dAngle);
-  let rAngle = degToRad(dAngle);
+
+
+export function createSpriteArray(rainObj){
+  let n = rainObj.number;
+  let rAngle = degToRad(rainObj.dAngle);
   let leftLim = 0;
   let rightLim = wiw;
   if(rAngle >= 0){
     rightLim += wih * Math.tan(rAngle);
   }
   else{
-  	leftLim += wih * Math.tan(rAngle);
+    leftLim += wih * Math.tan(rAngle);
   }
   for(let i = 0; i < n; i++)
   {
     spriteArray.push(createRainSprite(
-      colour,
+      rainObj.colour,
       getRandomInt(leftLim,rightLim), 
       getRandomInt(-wih,0), 
-      height, 
-      width, 
+      rainObj.rainH, 
+      rainObj.rainW, 
       rAngle,
-      velocity,
-      alpha)
+      rainObj.velocity,
+      rainObj.alpha)
     );
-    
-    //spriteArray[i].y = getRandomInt(-100,0)
+    //console.log(spriteArray[i]);
     app.stage.addChild(spriteArray[i]);
   }
 }
+
+
 
 function gameLoop(delta) {
 	for(let i = 0; i < spriteArray.length; i++){
@@ -95,7 +98,7 @@ function gameLoop(delta) {
         }
 
 	  	spriteArray[i].y = getRandomInt(-wih,0);
-        spriteArray[i].x = getRandomInt(leftLim,rightLim);
+      spriteArray[i].x = getRandomInt(leftLim,rightLim);
 	  }
 	}
 }

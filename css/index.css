@@ -16,4 +16,27 @@ body{
 
 #menutitle{
 	font-size: 64;
+	margin: 8px;
+}
+#options{
+	margin-left: 8px;
+	font-size: 20;
+}
+
+#options>div{
+	margin-top: 8px;
+	padding: 4px;
+	background-image: linear-gradient(90deg, #444444,#ffffff);
+	width: fit-content;
+	border-radius: 8px;
+}
+
+
+#defaults{
+	
+	cursor: pointer;
+}
+
+#generate{
+	cursor: pointer;
 }

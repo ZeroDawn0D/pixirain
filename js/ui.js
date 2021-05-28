@@ -28,7 +28,7 @@ function onMenuIconLoad(){
   //app.ticker.add(delta => gameLoop(delta))
 
   document.getElementById("menu").style.height = window.innerHeight;
-  document.getElementById("menu").style.width = window.innerWidth * 0.50;
+  document.getElementById("menu").style.width = window.innerWidth * 0.75;
   
 }
 
