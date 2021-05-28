@@ -1,4 +1,20 @@
 body{
 	margin: 0px;
 	padding: 0px;
+	
+}
+#container{
+	position: relative;
+	text-align: right;
+}
+
+#menu{
+	position: absolute;
+	background-color: #666666;
+	display: none;
+	text-align: right;
+}
+
+#menutitle{
+	font-size: 64;
 }

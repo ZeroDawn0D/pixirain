@@ -12,31 +12,45 @@ export function setupUI(appInput){
 
 
 let menuIconSprite;
+let displayMenu = false;
 function onMenuIconLoad(){
   menuIconSprite = new PIXI.Sprite(app.loader.resources["../files/menupix.png"].texture);
   menuIconSprite.tint = 0x555555;
+  menuIconSprite.anchor.x = 1;
+  menuIconSprite.x = window.innerWidth;
   menuIconSprite.interactive = true;
   menuIconSprite.buttonMode = true;
   app.stage.addChild(menuIconSprite);
 
   menuIconSprite
-    //.on('', onMenuHover)
-    .on('pointerdown', cl);
+    .on('pointerup', onUnclickMenu)
+    .on('pointerdown', onClickMenu);
   //app.ticker.add(delta => gameLoop(delta))
   
 }
 
-function onMenuHover()
+function onClickMenu()
 {
-  console.log("hover");
-  menuIconSprite.tint = 0x00aaaa;
+  console.log("click");
+  this.tint = 0xaaaaaa;
+
+  displayMenu = !displayMenu;
+
+  if(displayMenu)
+  {
+  	document.getElementById("menu").style.display = "block";
+  }
+  else
+  {
+    document.getElementById("menu").style.display = "none";
+  }
+}
+
+function onUnclickMenu()
+{
+  this.tint = 0x555555;
 }
 
 function gameLoop(delta){
 	
-}
-
-function cl()
-{
-	console.log("ckiuck")
 }

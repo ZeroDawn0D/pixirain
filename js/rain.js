@@ -111,7 +111,7 @@ export function createBackground(bgColour){
     antialias: true
   });
 
-  document.body.appendChild(app.view);
+  document.getElementById("rain").appendChild(app.view);
 }
 
 
