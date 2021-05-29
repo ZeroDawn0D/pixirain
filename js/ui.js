@@ -1,5 +1,5 @@
 import * as PIXI from "./pixi.mjs";
-
+//import * as RAIN from './rain.js'
 let app;
 
 export function setupUI(appInput){
@@ -90,41 +90,63 @@ class Rain{
 export let rainObj = new Rain(BGCOLOUR, NUMBER, COLOUR, RAINH, RAINW, DANGLE, VELOCITY, ALPHA);
 const RAINOBJ = new Rain(BGCOLOUR, NUMBER, COLOUR, RAINH, RAINW, DANGLE, VELOCITY, ALPHA);
 
-export function inputHandler(){
+export function inputHandler(RAIN){
   //alpha input
   document.getElementById("rain-alpha-range").onchange = () =>{
     document.getElementById("rain-alpha-number").value = document.getElementById("rain-alpha-range").value;  
-    rainObj.alpha = document.getElementById("rain-alpha-range").value;
+    rainObj.alpha = parseFloat(document.getElementById("rain-alpha-range").value);
   }
   document.getElementById("rain-alpha-number").onchange = () =>{
     document.getElementById("rain-alpha-range").value = document.getElementById("rain-alpha-number").value;
-    rainObj.alpha = document.getElementById("rain-alpha-range").value;
+    rainObj.alpha = parseFloat(document.getElementById("rain-alpha-range").value);
   }
 
   //num input
   document.getElementById("rain-num-range").onchange = () =>{
     document.getElementById("rain-num-number").value = document.getElementById("rain-num-range").value;
-    rainObj.number = document.getElementById("rain-num-range").value;
+    rainObj.number = parseInt(document.getElementById("rain-num-range").value);
   }
   document.getElementById("rain-num-number").onchange = () =>{
     document.getElementById("rain-num-range").value = document.getElementById("rain-num-number").value;
-    
+    rainObj.number = parseInt(document.getElementById("rain-num-range").value);
   }
 
 
   //angle input
   document.getElementById("rain-angle-range").onchange = () =>{
     document.getElementById("rain-angle-number").value = document.getElementById("rain-angle-range").value;
+    rainObj.dAngle = parseInt(document.getElementById("rain-angle-range").value);
   }
   document.getElementById("rain-angle-number").onchange = () => {
     document.getElementById("rain-angle-range").value = document.getElementById("rain-angle-number").value;
+    rainObj.dAngle = parseInt(document.getElementById("rain-angle-range").value);
   }
 
   //velocity input
   document.getElementById("velocity-range").onchange = () =>{
     document.getElementById("velocity-number").value = document.getElementById("velocity-range").value;
+   rainObj.velocity = parseInt(document.getElementById("velocity-range").value);
   }
   document.getElementById("velocity-number").onchange = () => {
     document.getElementById("velocity-range").value = document.getElementById("velocity-number").value;
+    rainObj.velocity = parseInt(document.getElementById("velocity-range").value);
+  }
+
+  //colour input
+
+  document.getElementById("colour-input").onchange = () =>{
+    rainObj.colour = parseInt(document.getElementById("colour-input").value.replace('#', '0x'));
+  
+  }
+
+  //bgcolour input
+  document.getElementById("bgcolour-input").onchange = () =>{
+    rainObj.bgColour = parseInt(document.getElementById("bgcolour-input").value.replace('#', '0x'));
+  
+  }
+
+  document.getElementById("generate").onclick = () => {
+    //RAIN.spriteArray = [];
+    RAIN.createSpriteArray(rainObj);
   }
 }

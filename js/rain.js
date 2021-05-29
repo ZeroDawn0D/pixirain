@@ -50,10 +50,12 @@ function createRainSprite(colour, x, y, height, width, rAngle, velocity, alpha){
 }
 
 //create sprite array of size n
-let spriteArray = new Array();
+let spriteArray;
 
 
 export function createSpriteArray(rainObj){
+  console.log("function called");
+  spriteArray = [];
   let n = rainObj.number;
   let rAngle = degToRad(rainObj.dAngle);
   let leftLim = 0;

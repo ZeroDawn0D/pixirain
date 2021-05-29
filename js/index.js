@@ -8,7 +8,7 @@ import * as UI from "./ui.js";
 
 
 
-
+console.log(RAIN);
 
 //document.body.appendChild(app.view);
 
@@ -17,7 +17,7 @@ import * as UI from "./ui.js";
 
 RAIN.createBackground(UI.rainObj.bgColour);
 UI.setupUI(RAIN.app);
-UI.inputHandler();
+UI.inputHandler(RAIN);
 //RAIN.createSpriteArray(number, colour, rainH, rainW, dAngle, velocity, alpha);
 RAIN.createSpriteArray(UI.rainObj);
 RAIN.startRain();
