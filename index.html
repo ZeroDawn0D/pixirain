@@ -32,18 +32,29 @@
 				</div>
 				
 				<div id = "rain-alpha">
-					Transparency: 
-					<input type = "range">
-					<span>
-						0.00
-					</span>
+					Opacity: 
+					<input id = "rain-alpha-range" type = "range" min = "0" max = "1" step = "0.01" value = "0.2">
+					<input id = "rain-alpha-number" type = "number" min = "0" max = "1" step = "0.01" value = "0.2">
 				</div>
 
 				<div id = "rain-num">
+					Particles: 
+					<input id = "rain-num-range" type = "range" min = "2000" max = "6000" step = "100" value = "4096">
+					<input id = "rain-num-number" type = "number" min = "2000" max = "6000" step = "100" value = "4096">
 				</div>
 
 				<div id = "rain-angle">
+					Angle: 
+					<input id = "rain-angle-range" type = "range" min = "-80" max = "80" step = "1" value = "0">
+					<input id = "rain-angle-number" type = "number" min = "-80" max = "80" step = "1" value = "0">
 				</div>
+
+				<div id = "velocity">
+					Velocity: 
+					<input id = "velocity-range" type = "range" min = "10" max = "20" step = "1" value = "15">
+					<input id = "velocity-number" type = "number" min = "10" max = "20" step = "1" value = "15">
+				</div>
+
 
 				<div id = "generate">
 					Generate Rain
