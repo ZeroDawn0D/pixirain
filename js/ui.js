@@ -54,12 +54,12 @@ function onUnclickMenu()
 function gameLoop(delta){
 	
 }
-const BGCOLOUR = 0x253255;
+const BGCOLOUR = 0x000000;
 const NUMBER = 4096;
 const COLOUR = 0xffffff;
 const RAINH = 32;
 const RAINW = 1;
-const DANGLE = 30;
+const DANGLE = 0;
 const VELOCITY = 15;
 const ALPHA = 0.2;
 
@@ -134,11 +134,33 @@ export function inputHandler(RAIN){
   //bgcolour input
   document.getElementById("bgcolour-input").onchange = () =>{
     rainObj.bgColour = parseInt(document.getElementById("bgcolour-input").value.replace('#', '0x'));
-  
   }
 
   document.getElementById("generate").onclick = () => {
     RAIN.deleteSpriteArray();
     RAIN.createSpriteArray(rainObj);
+
+    app.renderer.backgroundColor = rainObj.bgColour;
+    app.renderer.render(app.stage);
+  }
+
+  document.getElementById("defaults").onclick = () => {
+    document.getElementById("rain-alpha-number").value = ALPHA;
+    document.getElementById("rain-alpha-number").onchange();
+
+    document.getElementById("rain-num-number").value = NUMBER;
+    document.getElementById("rain-num-number").onchange();
+
+    document.getElementById("rain-angle-number").value = DANGLE;
+    document.getElementById("rain-angle-number").onchange();
+
+    document.getElementById("velocity-number").value = VELOCITY;
+    document.getElementById("velocity-number").onchange();
+
+    document.getElementById("colour-input").value = PIXI.utils.hex2string(COLOUR);
+    document.getElementById("colour-input").onchange();
+
+    document.getElementById("bgcolour-input").value = PIXI.utils.hex2string(BGCOLOUR);
+    document.getElementById("bgcolour-input").onchange();
   }
 }
