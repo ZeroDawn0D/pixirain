@@ -51,10 +51,9 @@ function createRainSprite(colour, x, y, height, width, rAngle, velocity, alpha){
 
 //create sprite array of size n
 let spriteArray;
-
+let rainContainer = new PIXI.Container();
 
 export function createSpriteArray(rainObj){
-  console.log("function called");
   spriteArray = [];
   let n = rainObj.number;
   let rAngle = degToRad(rainObj.dAngle);
@@ -79,10 +78,15 @@ export function createSpriteArray(rainObj){
       rainObj.alpha)
     );
     //console.log(spriteArray[i]);
-    app.stage.addChild(spriteArray[i]);
+    rainContainer.addChild(spriteArray[i]);
   }
+
+  app.stage.addChild(rainContainer);
 }
 
+export function deleteSpriteArray(){
+  rainContainer.removeChildren();
+}
 
 
 function gameLoop(delta) {

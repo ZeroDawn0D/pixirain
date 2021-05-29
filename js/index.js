@@ -8,7 +8,6 @@ import * as UI from "./ui.js";
 
 
 
-console.log(RAIN);
 
 //document.body.appendChild(app.view);
 

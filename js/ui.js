@@ -32,7 +32,6 @@ function onMenuIconLoad(){
 
 function onClickMenu()
 {
-  console.log("click");
   this.tint = 0xaaaaaa;
 
   displayMenu = !displayMenu;
@@ -55,13 +54,6 @@ function onUnclickMenu()
 function gameLoop(delta){
 	
 }
-
-
-
-
-
-
-
 const BGCOLOUR = 0x253255;
 const NUMBER = 4096;
 const COLOUR = 0xffffff;
@@ -146,7 +138,7 @@ export function inputHandler(RAIN){
   }
 
   document.getElementById("generate").onclick = () => {
-    //RAIN.spriteArray = [];
+    RAIN.deleteSpriteArray();
     RAIN.createSpriteArray(rainObj);
   }
 }
