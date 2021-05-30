@@ -1,4 +1,5 @@
-import * as PIXI from "./pixi.mjs";
+import * as PIXI from "./pixi.min.mjs";
+
 //degree/radian conversions
 const degToRad = (deg) => deg*Math.PI/180;
 const radToDeg = (rad) => rad*180/Math.PI;

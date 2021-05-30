@@ -1,3 +1,7 @@
+@font-face {
+  font-family: FTG;
+  src: url("../files/FrederickatheGreat-Regular.ttf");
+}
 body{
 	margin: 0px;
 	padding: 0px;
@@ -17,6 +21,7 @@ body{
 #menutitle{
 	font-size: 64;
 	margin: 8px;
+	font-family: FTG;
 }
 #options{
 	margin-left: 8px;

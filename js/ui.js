@@ -1,5 +1,4 @@
-import * as PIXI from "./pixi.mjs";
-//import * as RAIN from './rain.js'
+import * as PIXI from "./pixi.min.mjs";
 let app;
 
 export function setupUI(appInput){
