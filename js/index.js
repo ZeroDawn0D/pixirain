@@ -1,5 +1,6 @@
 import * as RAIN from "./rain.js"
 import * as UI from "./ui.js";
+import * as SOUND from "./audio.js";
 
 
 
@@ -20,5 +21,5 @@ UI.inputHandler(RAIN);
 //RAIN.createSpriteArray(number, colour, rainH, rainW, dAngle, velocity, alpha);
 RAIN.createSpriteArray(UI.rainObj);
 RAIN.startRain();
-
+SOUND.playRainSound();
 

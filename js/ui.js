@@ -3,6 +3,7 @@ let app;
 
 export function setupUI(appInput){
   app = appInput;
+  //createCustomMenu();
   app.loader
   .add("../files/menupix.png")
   .load(onMenuIconLoad);
@@ -162,4 +163,11 @@ export function inputHandler(RAIN){
     document.getElementById("bgcolour-input").value = PIXI.utils.hex2string(BGCOLOUR);
     document.getElementById("bgcolour-input").onchange();
   }
+}
+
+function createCustomMenu(){
+  let defaults = document.createElement("div");
+  defaults.appendChild(document.createTextNode("TestAddition"));
+
+  document.getElementById("options").appendChild(defaults);
 }
