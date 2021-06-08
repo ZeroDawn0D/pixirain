@@ -1,22 +1,49 @@
 import * as PIXI from "./pixi.min.mjs";
+import * as AUDIO from "./audio.js";
 let app;
 
 export function setupUI(appInput){
+
+  displaySound = true;
+  document.getElementById("sound").style.display = "block";
+
   app = appInput;
-  //createCustomMenu();
+  //createMenu();
   app.loader
+  .add("../files/soundpix.png")
   .add("../files/menupix.png")
-  .load(onMenuIconLoad);
+  .load(onIconsLoad);
+
+  AUDIO.setupSounds();
 }
 
 
-let menuIconSprite;
+
 let displayMenu = false;
-function onMenuIconLoad(){
+let displaySound = false;
+
+function onIconsLoad(){
+  let menuIconSprite;
+  let soundIconSprite;
+  soundIconSprite = new PIXI.Sprite(app.loader.resources["../files/soundpix.png"].texture);
+  soundIconSprite.tint = 0x555555;
+  soundIconSprite.anchor.x = 1;
+  soundIconSprite.x = window.innerWidth;
+  soundIconSprite.interactive = true;
+  soundIconSprite.buttonMode = true;
+  app.stage.addChild(soundIconSprite);
+  soundIconSprite
+    .on('pointerup', onUnclickSound)
+    .on('pointerdown', onClickSound);
+
+
+
+
   menuIconSprite = new PIXI.Sprite(app.loader.resources["../files/menupix.png"].texture);
   menuIconSprite.tint = 0x555555;
   menuIconSprite.anchor.x = 1;
   menuIconSprite.x = window.innerWidth;
+  menuIconSprite.y = 64;
   menuIconSprite.interactive = true;
   menuIconSprite.buttonMode = true;
   app.stage.addChild(menuIconSprite);
@@ -27,12 +54,43 @@ function onMenuIconLoad(){
 
   document.getElementById("menu").style.height = window.innerHeight;
   document.getElementById("menu").style.width = window.innerWidth * 0.75;
+  document.getElementById("sound").style.height = window.innerHeight;
+  document.getElementById("sound").style.width = window.innerWidth * 0.75;
   
 }
+function onClickSound()
+{
+  this.tint = 0xaaaaaa;
+
+  displayMenu = false;
+  document.getElementById("menu").style.display = "none";
+
+  displaySound = !displaySound;
+  if(displaySound)
+  {
+    document.getElementById("sound").style.display = "block";
+  }
+  else
+  {
+    document.getElementById("sound").style.display = "none";
+  }
+
+}
+
+function onUnclickSound()
+{
+  this.tint = 0x555555;
+}
+
+
+
 
 function onClickMenu()
 {
   this.tint = 0xaaaaaa;
+
+  displaySound = false;
+  document.getElementById("sound").style.display = "none";
 
   displayMenu = !displayMenu;
 
@@ -163,11 +221,36 @@ export function inputHandler(RAIN){
     document.getElementById("bgcolour-input").value = PIXI.utils.hex2string(BGCOLOUR);
     document.getElementById("bgcolour-input").onchange();
   }
+
+
+  document.getElementById("rain-sound-checkbox").onchange = () =>{
+    if(document.getElementById("rain-sound-checkbox").checked){
+      AUDIO.playRainSound();
+    }
+    else{
+      AUDIO.pauseRainSound();
+    }
+  }
+
+  document.getElementById("thunder-sound-checkbox").onchange = () =>{
+    if(document.getElementById("thunder-sound-checkbox").checked){
+      AUDIO.playThunderSound();
+      AUDIO.playThunder();
+    }
+    else{
+      AUDIO.pauseThunder();
+    }
+  }
+
+  document.getElementById("rain-volume-range").onchange = () =>{
+    AUDIO.setRainVolume(parseInt((document.getElementById("rain-volume-range").value)));
+
+  }
+
+  document.getElementById("thunder-volume-range").onchange = () =>{
+    AUDIO.setThunderVolume(parseInt((document.getElementById("thunder-volume-range").value)));
+  }
+
+
 }
 
-function createCustomMenu(){
-  let defaults = document.createElement("div");
-  defaults.appendChild(document.createTextNode("TestAddition"));
-
-  document.getElementById("options").appendChild(defaults);
-}

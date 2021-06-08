@@ -8,56 +8,81 @@
 </head>
 
 <body>
-	<script src="js/howler.js"></script>
+	<script src="js/howler.core.min.js"></script>
 	<script type="module" src = "js/index.js"></script>
 
 	<div id = "container">
 		<div id = "rain">
 		</div>
 		<div id = "menu">
-			<div id = "menutitle">
+			<div class = "menutitle">
 				Pixirain
 			</div>
-			<div id = "options">
+			<div class = "options">
 				<div id = "defaults">
-					Restore Defaults
+      				Restore Defaults
+    			</div>
+    			<div id = "rain-colour">
+      				Rain colour:
+      				<input id = "colour-input" type = "color" value = "#ffffff">
+    			</div>
+    			<div id = "canvas-colour">
+      				Background colour:
+      				<input id = "bgcolour-input" type = "color" value = "#000000">
+    			</div>
+        
+    			<div id = "rain-alpha">
+      				Opacity: 
+      				<input id = "rain-alpha-range" type = "range" min = "0" max = "1" step = "0.01" value = "0.2">
+      				<input id = "rain-alpha-number" type = "number" min = "0" max = "1" step = "0.01" value = "0.2">
+    			</div>
+
+    			<div id = "rain-num">
+      				Particles: 
+      				<input id = "rain-num-range" type = "range" min = "2000" max = "6000" step = "100" value = "4096">
+      				<input id = "rain-num-number" type = "number" min = "2000" max = "6000" step = "100" value = "4096">
+    			</div>
+
+    			<div id = "rain-angle">
+      				Angle: 
+      				<input id = "rain-angle-range" type = "range" min = "-80" max = "80" step = "1" value = "0">
+      				<input id = "rain-angle-number" type = "number" min = "-80" max = "80" step = "1" value = "0">
+    			</div>
+
+    			<div id = "velocity">
+      				Velocity: 
+      				<input id = "velocity-range" type = "range" min = "10" max = "20" step = "1" value = "15">
+      				<input id = "velocity-number" type = "number" min = "10" max = "20" step = "1" value = "15">
+    			</div>
+
+
+    			<div id = "generate">
+      				Generate Rain
+    			</div>
+			</div>
+		</div>
+
+		<div id = "sound">
+			<div class = "menutitle">
+				Pixirain
+			</div>
+			<div class = "options">
+				<div id = "rain-sound">
+					Rain Sound:
+					<input type = "checkbox" id = "rain-sound-checkbox">
 				</div>
-				<div id = "rain-colour">
-					Rain colour:
-					<input id = "colour-input" type = "color" value = "#ffffff">
-				</div>
-				<div id = "canvas-colour">
-					Background colour:
-					<input id = "bgcolour-input" type = "color" value = "#000000">
+				<div id = "thunder-sound">
+					Thunder:
+					<input type = "checkbox" id = "thunder-sound-checkbox">
 				</div>
 				
-				<div id = "rain-alpha">
-					Opacity: 
-					<input id = "rain-alpha-range" type = "range" min = "0" max = "1" step = "0.01" value = "0.2">
-					<input id = "rain-alpha-number" type = "number" min = "0" max = "1" step = "0.01" value = "0.2">
+				<div id = "rain-volume">
+					Rain Volume:
+					<input id = "rain-volume-range" type = "range" min = "0" max = "100" step = "1" value = "50"> 
 				</div>
-
-				<div id = "rain-num">
-					Particles: 
-					<input id = "rain-num-range" type = "range" min = "2000" max = "6000" step = "100" value = "4096">
-					<input id = "rain-num-number" type = "number" min = "2000" max = "6000" step = "100" value = "4096">
-				</div>
-
-				<div id = "rain-angle">
-					Angle: 
-					<input id = "rain-angle-range" type = "range" min = "-80" max = "80" step = "1" value = "0">
-					<input id = "rain-angle-number" type = "number" min = "-80" max = "80" step = "1" value = "0">
-				</div>
-
-				<div id = "velocity">
-					Velocity: 
-					<input id = "velocity-range" type = "range" min = "10" max = "20" step = "1" value = "15">
-					<input id = "velocity-number" type = "number" min = "10" max = "20" step = "1" value = "15">
-				</div>
-
-
-				<div id = "generate">
-					Generate Rain
+				<div id = "thunder-volume">
+					Thunder Volume:
+					<input id = "thunder-volume-range" type = "range" min = "0" max = "100" step = "1" value = "50"> 
 				</div>
 			</div>
 		</div>
