@@ -135,3 +135,20 @@ export function startRain(){
   
   app.ticker.add(delta => gameLoop(delta))
 }
+
+export function pixelart(){
+  PIXI.Loader.shared
+    .add("../files/mountain.png")
+    .load(onPixelLoad);
+}
+
+function onPixelLoad(){
+  let bgSprite;
+  bgSprite = new PIXI.Sprite(PIXI.Loader.shared.resources["../files/mountain.png"].texture);
+  bgSprite.x = window.innerWidth;
+  bgSprite.y = window.innerHeight;
+  bgSprite.anchor.x = 0;
+  bgSprite.anchor.y = 0;
+  app.stage.addChild(bgSprite);
+  app.renderer.render(app.stage);
+}

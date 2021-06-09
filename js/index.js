@@ -6,4 +6,5 @@ UI.setupUI(RAIN.app);
 UI.inputHandler(RAIN);
 RAIN.createSpriteArray(UI.rainObj);
 RAIN.startRain();
+//RAIN.pixelart();
 

@@ -8,21 +8,24 @@ export function setupUI(appInput){
   document.getElementById("sound").style.display = "block";
 
   app = appInput;
-  //createMenu();
+  //load all assets
   app.loader
   .add("../files/soundpix.png")
   .add("../files/menupix.png")
-  .load(onIconsLoad);
+  .add("../files/mountain.png")
+  .load(onLoad);
 
   AUDIO.setupSounds();
 }
 
 
 
+
+
 let displayMenu = false;
 let displaySound = false;
 
-function onIconsLoad(){
+function onLoad(){
   let menuIconSprite;
   let soundIconSprite;
   soundIconSprite = new PIXI.Sprite(app.loader.resources["../files/soundpix.png"].texture);
@@ -57,6 +60,16 @@ function onIconsLoad(){
   document.getElementById("sound").style.height = window.innerHeight;
   document.getElementById("sound").style.width = window.innerWidth * 0.75;
   
+
+  let bgSprite;
+  bgSprite = new PIXI.Sprite(app.loader.resources["../files/mountain.png"].texture);
+  bgSprite.width = window.innerWidth;
+  bgSprite.height = window.innerHeight;
+  bgSprite.anchor.x = 0;
+  bgSprite.anchor.y = 0;
+  app.stage.addChild(bgSprite);
+
+
 }
 function onClickSound()
 {
