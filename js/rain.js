@@ -82,7 +82,41 @@ export function createSpriteArray(rainObj){
     rainContainer.addChild(spriteArray[i]);
   }
 
-  app.stage.addChild(rainContainer);
+  //app.stage.addChild(rainContainer);
+  console.log("added rain container");
+}
+
+export function createSpriteArrayINIT(rainObj){
+  spriteArray = [];
+  let n = rainObj.number;
+  let rAngle = degToRad(rainObj.dAngle);
+  let leftLim = 0;
+  let rightLim = wiw;
+  if(rAngle >= 0){
+    rightLim += wih * Math.tan(rAngle);
+  }
+  else{
+    leftLim += wih * Math.tan(rAngle);
+  }
+  for(let i = 0; i < n; i++)
+  {
+    spriteArray.push(createRainSprite(
+      rainObj.colour,
+      getRandomInt(leftLim,rightLim), 
+      getRandomInt(-wih,0), 
+      rainObj.rainH, 
+      rainObj.rainW, 
+      rAngle,
+      rainObj.velocity,
+      rainObj.alpha)
+    );
+    //console.log(spriteArray[i]);
+    rainContainer.addChild(spriteArray[i]);
+  }
+
+  //app.stage.addChild(rainContainer);
+  
+  return rainContainer;
 }
 
 export function deleteSpriteArray(){
@@ -136,19 +170,3 @@ export function startRain(){
   app.ticker.add(delta => gameLoop(delta))
 }
 
-export function pixelart(){
-  PIXI.Loader.shared
-    .add("../files/mountain.png")
-    .load(onPixelLoad);
-}
-
-function onPixelLoad(){
-  let bgSprite;
-  bgSprite = new PIXI.Sprite(PIXI.Loader.shared.resources["../files/mountain.png"].texture);
-  bgSprite.x = window.innerWidth;
-  bgSprite.y = window.innerHeight;
-  bgSprite.anchor.x = 0;
-  bgSprite.anchor.y = 0;
-  app.stage.addChild(bgSprite);
-  app.renderer.render(app.stage);
-}

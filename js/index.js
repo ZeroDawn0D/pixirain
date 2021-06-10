@@ -2,9 +2,10 @@ import * as RAIN from "./rain.js"
 import * as UI from "./ui.js";
 
 RAIN.createBackground(UI.rainObj.bgColour);
-UI.setupUI(RAIN.app);
+
 UI.inputHandler(RAIN);
-RAIN.createSpriteArray(UI.rainObj);
+let rainContainer = RAIN.createSpriteArrayINIT(UI.rainObj);
+UI.setupUI(RAIN.app, rainContainer);
 RAIN.startRain();
 //RAIN.pixelart();
 

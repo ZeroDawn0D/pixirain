@@ -1,8 +1,10 @@
 import * as PIXI from "./pixi.min.mjs";
 import * as AUDIO from "./audio.js";
 let app;
-
-export function setupUI(appInput){
+let rainContainer;
+//later add => on top
+export function setupUI(appInput, rainC){
+  rainContainer = rainC;
 
   displaySound = true;
   document.getElementById("sound").style.display = "block";
@@ -12,6 +14,7 @@ export function setupUI(appInput){
   app.loader
   .add("../files/soundpix.png")
   .add("../files/menupix.png")
+  .add("../files/scenepix.png")
   .add("../files/mountain.png")
   .load(onLoad);
 
@@ -24,23 +27,24 @@ export function setupUI(appInput){
 
 let displayMenu = false;
 let displaySound = false;
+let displayScene = false;
 
-function onLoad(){
+function addIconsToContainer(){
+  let iconContainer = new PIXI.Container();
   let menuIconSprite;
   let soundIconSprite;
+  let sceneIconSprite;
+
   soundIconSprite = new PIXI.Sprite(app.loader.resources["../files/soundpix.png"].texture);
   soundIconSprite.tint = 0x555555;
   soundIconSprite.anchor.x = 1;
   soundIconSprite.x = window.innerWidth;
   soundIconSprite.interactive = true;
   soundIconSprite.buttonMode = true;
-  app.stage.addChild(soundIconSprite);
+  iconContainer.addChild(soundIconSprite);
   soundIconSprite
-    .on('pointerup', onUnclickSound)
+    .on('pointerup', onUnclick)
     .on('pointerdown', onClickSound);
-
-
-
 
   menuIconSprite = new PIXI.Sprite(app.loader.resources["../files/menupix.png"].texture);
   menuIconSprite.tint = 0x555555;
@@ -49,34 +53,99 @@ function onLoad(){
   menuIconSprite.y = 64;
   menuIconSprite.interactive = true;
   menuIconSprite.buttonMode = true;
-  app.stage.addChild(menuIconSprite);
+  iconContainer.addChild(menuIconSprite);
 
   menuIconSprite
-    .on('pointerup', onUnclickMenu)
+    .on('pointerup', onUnclick)
     .on('pointerdown', onClickMenu);
 
-  document.getElementById("menu").style.height = window.innerHeight;
-  document.getElementById("menu").style.width = window.innerWidth * 0.75;
-  document.getElementById("sound").style.height = window.innerHeight;
-  document.getElementById("sound").style.width = window.innerWidth * 0.75;
-  
+  sceneIconSprite = new PIXI.Sprite(app.loader.resources["../files/scenepix.png"].texture);
+  sceneIconSprite.tint = 0x555555;
+  sceneIconSprite.anchor.x = 1;
+  sceneIconSprite.x = window.innerWidth;
+  sceneIconSprite.y = 128;
+  sceneIconSprite.interactive = true;
+  sceneIconSprite.buttonMode = true;
+  iconContainer.addChild(sceneIconSprite);
+  sceneIconSprite
+    .on('pointerup', onUnclick)
+    .on('pointerdown', onClickScene);
+  console.log("added icons");
 
-  let bgSprite;
+  app.stage.addChild(iconContainer);
+}
+
+function addBG(){
   bgSprite = new PIXI.Sprite(app.loader.resources["../files/mountain.png"].texture);
   bgSprite.width = window.innerWidth;
   bgSprite.height = window.innerHeight;
   bgSprite.anchor.x = 0;
   bgSprite.anchor.y = 0;
   app.stage.addChild(bgSprite);
+  console.log("bg added");
+
+}
+
+let bgSprite;
+function onLoad(){
+  console.log("loader access");
+  //rainContainer.parent.removeChild(rainContainer);
+  addBG();
+  addIconsToContainer();
+  console.log("added rain container");
+  app.stage.addChild(rainContainer);
+  document.getElementById("menu").style.height = window.innerHeight;
+  document.getElementById("menu").style.width = window.innerWidth * 0.75;
+  document.getElementById("sound").style.height = window.innerHeight;
+  document.getElementById("sound").style.width = window.innerWidth * 0.75;
+  document.getElementById("scene").style.height = window.innerHeight;
+  document.getElementById("scene").style.width = window.innerWidth * 0.75;
+
+  //let bgSprite;
+  
 
 
 }
+
+
+function onClickScene(){
+  this.tint = 0xaaaaaa;
+
+  displaySound = false;
+  document.getElementById("sound").style.display = "none";
+  displayMenu = false;
+  document.getElementById("menu").style.display = "none";
+
+
+  displayScene = !displayScene;
+
+  if(displayScene)
+  {
+    document.getElementById("scene").style.display = "block";
+  }
+  else
+  {
+    document.getElementById("scene").style.display = "none";
+  }
+
+}
+
+
+
+function onUnclick(){
+  this.tint = 0x555555;
+}
+
 function onClickSound()
 {
   this.tint = 0xaaaaaa;
 
   displayMenu = false;
   document.getElementById("menu").style.display = "none";
+  displayScene = false;
+  document.getElementById("scene").style.display = "none";
+
+
 
   displaySound = !displaySound;
   if(displaySound)
@@ -90,20 +159,15 @@ function onClickSound()
 
 }
 
-function onUnclickSound()
-{
-  this.tint = 0x555555;
-}
-
-
-
-
 function onClickMenu()
 {
   this.tint = 0xaaaaaa;
 
   displaySound = false;
   document.getElementById("sound").style.display = "none";
+  displayScene = false;
+  document.getElementById("scene").style.display = "none";
+
 
   displayMenu = !displayMenu;
 
@@ -117,17 +181,10 @@ function onClickMenu()
   }
 }
 
-function onUnclickMenu()
-{
-  this.tint = 0x555555;
-}
 
-function gameLoop(delta){
-	
-}
 const BGCOLOUR = 0x000000;
 const NUMBER = 4096;
-const COLOUR = 0xffffff;
+const COLOUR = 0x00ffff;
 const RAINH = 32;
 const RAINW = 1;
 const DANGLE = 0;
@@ -151,7 +208,7 @@ class Rain{
 }
 
 export let rainObj = new Rain(BGCOLOUR, NUMBER, COLOUR, RAINH, RAINW, DANGLE, VELOCITY, ALPHA);
-const RAINOBJ = new Rain(BGCOLOUR, NUMBER, COLOUR, RAINH, RAINW, DANGLE, VELOCITY, ALPHA);
+//const RAINOBJ = new Rain(BGCOLOUR, NUMBER, COLOUR, RAINH, RAINW, DANGLE, VELOCITY, ALPHA);
 
 export function inputHandler(RAIN){
   //alpha input
