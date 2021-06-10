@@ -78,12 +78,8 @@ export function createSpriteArray(rainObj){
       rainObj.velocity,
       rainObj.alpha)
     );
-    //console.log(spriteArray[i]);
     rainContainer.addChild(spriteArray[i]);
   }
-
-  //app.stage.addChild(rainContainer);
-  console.log("added rain container");
 }
 
 export function createSpriteArrayINIT(rainObj){
@@ -110,11 +106,8 @@ export function createSpriteArrayINIT(rainObj){
       rainObj.velocity,
       rainObj.alpha)
     );
-    //console.log(spriteArray[i]);
     rainContainer.addChild(spriteArray[i]);
   }
-
-  //app.stage.addChild(rainContainer);
   
   return rainContainer;
 }

@@ -2,7 +2,8 @@ import * as PIXI from "./pixi.min.mjs";
 import * as AUDIO from "./audio.js";
 let app;
 let rainContainer;
-//later add => on top
+let background;
+
 export function setupUI(appInput, rainC){
   rainContainer = rainC;
 
@@ -10,7 +11,7 @@ export function setupUI(appInput, rainC){
   document.getElementById("sound").style.display = "block";
 
   app = appInput;
-  //load all assets
+
   app.loader
   .add("../files/soundpix.png")
   .add("../files/menupix.png")
@@ -70,7 +71,6 @@ function addIconsToContainer(){
   sceneIconSprite
     .on('pointerup', onUnclick)
     .on('pointerdown', onClickScene);
-  console.log("added icons");
 
   app.stage.addChild(iconContainer);
 }
@@ -81,18 +81,15 @@ function addBG(){
   bgSprite.height = window.innerHeight;
   bgSprite.anchor.x = 0;
   bgSprite.anchor.y = 0;
+  bgSprite.alpha = 0;
+  background = bgSprite;
   app.stage.addChild(bgSprite);
-  console.log("bg added");
-
 }
 
 let bgSprite;
 function onLoad(){
-  console.log("loader access");
-  //rainContainer.parent.removeChild(rainContainer);
   addBG();
   addIconsToContainer();
-  console.log("added rain container");
   app.stage.addChild(rainContainer);
   document.getElementById("menu").style.height = window.innerHeight;
   document.getElementById("menu").style.width = window.innerWidth * 0.75;
@@ -100,10 +97,6 @@ function onLoad(){
   document.getElementById("sound").style.width = window.innerWidth * 0.75;
   document.getElementById("scene").style.height = window.innerHeight;
   document.getElementById("scene").style.width = window.innerWidth * 0.75;
-
-  //let bgSprite;
-  
-
 
 }
 
@@ -181,10 +174,20 @@ function onClickMenu()
   }
 }
 
+function changeBG(q){
+  if(q==="default")
+    background.alpha = 0;
+  if(q==="mountain")
+    background.alpha = 1;
+
+}
+
+
+
 
 const BGCOLOUR = 0x000000;
 const NUMBER = 4096;
-const COLOUR = 0x00ffff;
+const COLOUR = 0xffffff;
 const RAINH = 32;
 const RAINW = 1;
 const DANGLE = 0;
@@ -321,6 +324,12 @@ export function inputHandler(RAIN){
     AUDIO.setThunderVolume(parseInt((document.getElementById("thunder-volume-range").value)));
   }
 
+  document.getElementById("default-scene").onchange = () =>{
+    changeBG("default");
+  };
+  document.getElementById("mountain-scene").onchange = () =>{
+    changeBG("mountain");
+  };
 
 }
 
