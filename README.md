@@ -15,3 +15,10 @@ I like rain.
 * Rain and thunder sounds can be individually turned on with full volume control
 * Rain particle and Background colours can be changed along with particle transparency.
 * Particle count, velocity, angle of rainfall are all fully customisable.
+
+## Setup
+PixiJS requires a web server be set-up in the root project directory. I used 
+```bash
+python3 -m http.server
+```
+for development 
