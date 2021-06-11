@@ -1,6 +1,7 @@
 [![Pixirain](https://img.shields.io/badge/Website-Pixirain.netlify.app-black?style=for-the-badge)](http://pixirain.netlify.app)   
 [![Netlify Status](https://api.netlify.com/api/v1/badges/2d268ea5-b2e2-4c4e-9d1a-1c781a1e1362/deploy-status)](https://app.netlify.com/sites/pixirain/deploys) ![GitHub](https://img.shields.io/github/license/ZeroDawn0D/pixirain)
 # Pixirain 
+![](https://media.giphy.com/media/JDb9t694Ey4DM8WMSr/giphy.gif)
 ## What is it
 Pixirain is a flexible procedural rain generator. It was written in [PixiJS](https://www.pixijs.com/), a 2D WebGL renderer and [Howler.js](https://howlerjs.com/), an audio library which uses the Web Audio API.
 

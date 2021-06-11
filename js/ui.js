@@ -182,7 +182,9 @@ function changeBG(q){
 
 }
 
-
+function changeSceneColour(colour1, colour2, colour3){
+  background.tint = colour1;
+}
 
 
 const BGCOLOUR = 0x000000;
@@ -331,5 +333,8 @@ export function inputHandler(RAIN){
     changeBG("mountain");
   };
 
+  document.getElementById("colour-input-1").onchange = () =>{
+    changeSceneColour(parseInt(document.getElementById("colour-input-1").value.replace('#', '0x')))
+  }
 }
 
