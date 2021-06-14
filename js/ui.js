@@ -17,6 +17,7 @@ export function setupUI(appInput, rainC){
   .add("../files/menupix.png")
   .add("../files/scenepix.png")
   .add("../files/mountain.png")
+  .add("../files/city.png")
   .load(onLoad);
 
   AUDIO.setupSounds();
@@ -175,11 +176,17 @@ function onClickMenu()
 }
 
 function changeBG(q){
-  if(q==="default")
+  if(q==="default"){
     background.alpha = 0;
-  if(q==="mountain")
+  }
+  if(q==="mountain"){
     background.alpha = 1;
-
+    background.texture = app.loader.resources["../files/mountain.png"].texture
+  }
+  if(q==="city"){
+    background.alpha = 1;
+    background.texture = app.loader.resources["../files/city.png"].texture;
+  }
 }
 
 function changeSceneColour(colour1, colour2, colour3){
@@ -331,6 +338,9 @@ export function inputHandler(RAIN){
   };
   document.getElementById("mountain-scene").onchange = () =>{
     changeBG("mountain");
+  };
+  document.getElementById("city-scene").onchange = () =>{
+    changeBG("city");
   };
 
   document.getElementById("colour-input-1").onchange = () =>{
