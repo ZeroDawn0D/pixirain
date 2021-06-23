@@ -4,14 +4,20 @@ let app;
 let rainContainer;
 let background;
 
+let displayMenu = false;
+let displaySound = true;
+let displayScene = false;
+
+
+let menuIconSprite;
+let soundIconSprite;
+let sceneIconSprite;
+
 export function setupUI(appInput, rainC){
   rainContainer = rainC;
-
-  displaySound = true;
   document.getElementById("sound").style.display = "block";
-
   app = appInput;
-
+  beforeLoad();
   app.loader
   .add("../files/soundpix.png")
   .add("../files/menupix.png")
@@ -27,17 +33,9 @@ export function setupUI(appInput, rainC){
 
 
 
-let displayMenu = false;
-let displaySound = false;
-let displayScene = false;
-
 function addIconsToContainer(){
   let iconContainer = new PIXI.Container();
-  let menuIconSprite;
-  let soundIconSprite;
-  let sceneIconSprite;
-
-  soundIconSprite = new PIXI.Sprite(app.loader.resources["../files/soundpix.png"].texture);
+  soundIconSprite = new PIXI.Sprite(PIXI.Texture.EMPTY);
   soundIconSprite.tint = 0x555555;
   soundIconSprite.anchor.x = 1;
   soundIconSprite.x = window.innerWidth;
@@ -48,7 +46,7 @@ function addIconsToContainer(){
     .on('pointerup', onUnclick)
     .on('pointerdown', onClickSound);
 
-  menuIconSprite = new PIXI.Sprite(app.loader.resources["../files/menupix.png"].texture);
+  menuIconSprite = new PIXI.Sprite(PIXI.Texture.EMPTY);
   menuIconSprite.tint = 0x555555;
   menuIconSprite.anchor.x = 1;
   menuIconSprite.x = window.innerWidth;
@@ -61,7 +59,7 @@ function addIconsToContainer(){
     .on('pointerup', onUnclick)
     .on('pointerdown', onClickMenu);
 
-  sceneIconSprite = new PIXI.Sprite(app.loader.resources["../files/scenepix.png"].texture);
+  sceneIconSprite = new PIXI.Sprite(PIXI.Texture.EMPTY);
   sceneIconSprite.tint = 0x555555;
   sceneIconSprite.anchor.x = 1;
   sceneIconSprite.x = window.innerWidth;
@@ -77,7 +75,7 @@ function addIconsToContainer(){
 }
 
 function addBG(){
-  bgSprite = new PIXI.Sprite(app.loader.resources["../files/mountain.png"].texture);
+  let bgSprite = new PIXI.Sprite(PIXI.Texture.EMPTY);
   bgSprite.width = window.innerWidth;
   bgSprite.height = window.innerHeight;
   bgSprite.anchor.x = 0;
@@ -87,8 +85,13 @@ function addBG(){
   app.stage.addChild(bgSprite);
 }
 
-let bgSprite;
 function onLoad(){
+  soundIconSprite.texture = app.loader.resources["../files/soundpix.png"].texture;
+  menuIconSprite.texture = app.loader.resources["../files/menupix.png"].texture;
+  sceneIconSprite.texture = app.loader.resources["../files/scenepix.png"].texture;
+}
+
+function beforeLoad(){
   addBG();
   addIconsToContainer();
   app.stage.addChild(rainContainer);
@@ -98,10 +101,7 @@ function onLoad(){
   document.getElementById("sound").style.width = window.innerWidth * 0.75;
   document.getElementById("scene").style.height = window.innerHeight;
   document.getElementById("scene").style.width = window.innerWidth * 0.75;
-
 }
-
-
 function onClickScene(){
   this.tint = 0xaaaaaa;
 
@@ -113,12 +113,10 @@ function onClickScene(){
 
   displayScene = !displayScene;
 
-  if(displayScene)
-  {
+  if(displayScene){
     document.getElementById("scene").style.display = "block";
   }
-  else
-  {
+  else{
     document.getElementById("scene").style.display = "none";
   }
 
