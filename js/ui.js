@@ -187,7 +187,7 @@ function changeBG(q){
   }
 }
 
-function changeSceneColour(colour1, colour2, colour3){
+function changeSceneColour(colour1){
   background.tint = colour1;
 }
 
@@ -341,8 +341,8 @@ export function inputHandler(RAIN){
     changeBG("city");
   };
 
-  document.getElementById("colour-input-1").onchange = () =>{
-    changeSceneColour(parseInt(document.getElementById("colour-input-1").value.replace('#', '0x')))
+  document.getElementById("colour-input-scene").onchange = () =>{
+    changeSceneColour(parseInt(document.getElementById("colour-input-scene").value.replace('#', '0x')))
   }
 }
 
