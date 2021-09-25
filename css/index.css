@@ -17,25 +17,27 @@
 }
 #menu{
 	position: absolute;
-	background-color: #959595;
+	background-color: #dddddd;
 	border-radius: 0px 50px 50px 0px;
-	display: none;
+	box-shadow: -8px 0px 32px 16px #959595;
+	display:none;
 }
 
 #scene{
 	position: absolute;
-	background-color: #959595;
+	background-color: #dddddd;
 	border-radius: 0px 50px 50px 0px;
-	display: none;
+	box-shadow: -8px 0px 32px 16px #959595;
+	display:none;
 }
 
 .menutitle{
 
 	font-size: 64;
 	margin: 8px;
+
 	
-	
-	color: #2b2b2b;
+	color: #000000;
 }
 
 
@@ -53,12 +55,13 @@
 }
 
 #defaults{
-	
+	font-size: 32px;
 	cursor: pointer;
 }
 
 #generate{
 	cursor: pointer;
+	font-size: 32px;
 }
 
 #sound{
