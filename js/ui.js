@@ -96,11 +96,11 @@ function beforeLoad(){
   addIconsToContainer();
   app.stage.addChild(rainContainer);
   document.getElementById("menu").style.height = window.innerHeight;
-  document.getElementById("menu").style.width = window.innerWidth * 0.75;
+  document.getElementById("menu").style.width = window.innerWidth * 0.25;
   document.getElementById("sound").style.height = window.innerHeight;
-  document.getElementById("sound").style.width = window.innerWidth * 0.75;
+  document.getElementById("sound").style.width = window.innerWidth * 0.25;
   document.getElementById("scene").style.height = window.innerHeight;
-  document.getElementById("scene").style.width = window.innerWidth * 0.75;
+  document.getElementById("scene").style.width = window.innerWidth * 0.25;
 }
 function onClickScene(){
   this.tint = 0xaaaaaa;
