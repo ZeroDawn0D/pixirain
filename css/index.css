@@ -17,17 +17,13 @@
 }
 #menu{
 	position: absolute;
-	background-color: #dddddd;
-	border-radius: 0px 50px 50px 0px;
-	box-shadow: -8px 0px 32px 16px #959595;
+	background-image: linear-gradient(90deg,rgba(221,221,221,1), rgba(221,221,221,1) 25%, rgba(0,0,0,0));
 	display:none;
 }
 
 #scene{
 	position: absolute;
-	background-color: #dddddd;
-	border-radius: 0px 50px 50px 0px;
-	box-shadow: -8px 0px 32px 16px #959595;
+	background-image: linear-gradient(90deg,rgba(221,221,221,1), rgba(221,221,221,1) 25%, rgba(0,0,0,0));
 	display:none;
 }
 
@@ -35,7 +31,7 @@
 
 	font-size: 64;
 	margin: 8px;
-
+	font-family: FTG;
 	
 	color: #000000;
 }
@@ -66,9 +62,7 @@
 
 #sound{
 	position: absolute;
-	background-color: #dddddd;
-	border-radius: 0px 50px 50px 0px;
-	box-shadow: -8px 0px 32px 16px #959595;
+	background-image: linear-gradient(90deg,rgba(221,221,221,1), rgba(221,221,221,1) 25%, rgba(0,0,0,0));
 	display:none;
 }
 
@@ -76,4 +70,3 @@
 	width: 1.5em;
 	height: 1.5em;
 }
-

@@ -38,7 +38,8 @@ function addIconsToContainer(){
   soundIconSprite = new PIXI.Sprite(PIXI.Texture.EMPTY);
   soundIconSprite.tint = 0x555555;
   soundIconSprite.anchor.x = 1;
-  soundIconSprite.x = window.innerWidth;
+  soundIconSprite.x = window.innerWidth-8;
+  soundIconSprite.y = 0+8
   soundIconSprite.interactive = true;
   soundIconSprite.buttonMode = true;
   iconContainer.addChild(soundIconSprite);
@@ -49,8 +50,8 @@ function addIconsToContainer(){
   menuIconSprite = new PIXI.Sprite(PIXI.Texture.EMPTY);
   menuIconSprite.tint = 0x555555;
   menuIconSprite.anchor.x = 1;
-  menuIconSprite.x = window.innerWidth;
-  menuIconSprite.y = 64;
+  menuIconSprite.x = window.innerWidth-8;
+  menuIconSprite.y = 64+8+4;
   menuIconSprite.interactive = true;
   menuIconSprite.buttonMode = true;
   iconContainer.addChild(menuIconSprite);
@@ -62,8 +63,8 @@ function addIconsToContainer(){
   sceneIconSprite = new PIXI.Sprite(PIXI.Texture.EMPTY);
   sceneIconSprite.tint = 0x555555;
   sceneIconSprite.anchor.x = 1;
-  sceneIconSprite.x = window.innerWidth;
-  sceneIconSprite.y = 128;
+  sceneIconSprite.x = window.innerWidth-8;
+  sceneIconSprite.y = 128+8+4+4;
   sceneIconSprite.interactive = true;
   sceneIconSprite.buttonMode = true;
   iconContainer.addChild(sceneIconSprite);
@@ -96,11 +97,11 @@ function beforeLoad(){
   addIconsToContainer();
   app.stage.addChild(rainContainer);
   document.getElementById("menu").style.height = window.innerHeight;
-  document.getElementById("menu").style.width = window.innerWidth * 0.25;
+  document.getElementById("menu").style.width = window.innerWidth * 0.75;
   document.getElementById("sound").style.height = window.innerHeight;
-  document.getElementById("sound").style.width = window.innerWidth * 0.25;
+  document.getElementById("sound").style.width = window.innerWidth * 0.75;
   document.getElementById("scene").style.height = window.innerHeight;
-  document.getElementById("scene").style.width = window.innerWidth * 0.25;
+  document.getElementById("scene").style.width = window.innerWidth * 0.75;
 }
 function onClickScene(){
   this.tint = 0xaaaaaa;
