@@ -24,6 +24,7 @@ export function setupUI(appInput, rainC){
   .add("../files/scenepix.png")
   .add("../files/mountain.png")
   .add("../files/city.png")
+  .add("../files/moon.png")
   .load(onLoad);
 
   AUDIO.setupSounds();
@@ -186,6 +187,10 @@ function changeBG(q){
     background.alpha = 1;
     background.texture = app.loader.resources["../files/city.png"].texture;
   }
+  if(q=="moon"){
+    background.alpha = 1;
+    background.texture = app.loader.resources["../files/moon.png"].texture;
+  }
 }
 
 function changeSceneColour(colour1){
@@ -340,6 +345,9 @@ export function inputHandler(RAIN){
   };
   document.getElementById("city-scene").onchange = () =>{
     changeBG("city");
+  };
+  document.getElementById("moon-scene").onchange = () =>{
+    changeBG("moon");
   };
 
   document.getElementById("colour-input-scene").onchange = () =>{
