@@ -91,6 +91,7 @@ function onLoad(){
   soundIconSprite.texture = app.loader.resources["../files/soundpix.png"].texture;
   menuIconSprite.texture = app.loader.resources["../files/menupix.png"].texture;
   sceneIconSprite.texture = app.loader.resources["../files/scenepix.png"].texture;
+  changeBG("moon");
 }
 
 function beforeLoad(){
