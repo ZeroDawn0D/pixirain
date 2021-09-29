@@ -19,12 +19,12 @@ export function setupUI(appInput, rainC){
   app = appInput;
   beforeLoad();
   app.loader
-  .add("../files/soundpix.png")
-  .add("../files/menupix.png")
-  .add("../files/scenepix.png")
-  .add("../files/mountain.png")
-  .add("../files/city.png")
-  .add("../files/moon.png")
+  .add("./files/soundpix.png")
+  .add("./files/menupix.png")
+  .add("./files/scenepix.png")
+  .add("./files/mountain.png")
+  .add("./files/city.png")
+  .add("./files/moon.png")
   .load(onLoad);
 
   AUDIO.setupSounds();
@@ -88,9 +88,9 @@ function addBG(){
 }
 
 function onLoad(){
-  soundIconSprite.texture = app.loader.resources["../files/soundpix.png"].texture;
-  menuIconSprite.texture = app.loader.resources["../files/menupix.png"].texture;
-  sceneIconSprite.texture = app.loader.resources["../files/scenepix.png"].texture;
+  soundIconSprite.texture = app.loader.resources["./files/soundpix.png"].texture;
+  menuIconSprite.texture = app.loader.resources["./files/menupix.png"].texture;
+  sceneIconSprite.texture = app.loader.resources["./files/scenepix.png"].texture;
 }
 
 function beforeLoad(){
@@ -181,15 +181,15 @@ function changeBG(q){
   }
   if(q==="mountain"){
     background.alpha = 1;
-    background.texture = app.loader.resources["../files/mountain.png"].texture
+    background.texture = app.loader.resources["./files/mountain.png"].texture
   }
   if(q==="city"){
     background.alpha = 1;
-    background.texture = app.loader.resources["../files/city.png"].texture;
+    background.texture = app.loader.resources["./files/city.png"].texture;
   }
   if(q=="moon"){
     background.alpha = 1;
-    background.texture = app.loader.resources["../files/moon.png"].texture;
+    background.texture = app.loader.resources["./files/moon.png"].texture;
   }
 }
 
