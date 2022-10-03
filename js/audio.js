@@ -9,13 +9,13 @@ function getRandomInt(min, max) {
 }
 export function setupSounds(){
   rainMediumSound = new Howl({
-    src: ['../files/RainfallMedium.mp3'],
+    src: ['http://raw.githubusercontent.com/ZeroDawn0D/pixirain/master/files/RainfallMedium.mp3'],
     loop: true,
     volume: 0.5
   });
 
   thunderSound = new Howl({
-    src: ['../files/thunder.mp3'],
+    src: ['http://raw.githubusercontent.com/ZeroDawn0D/pixirain/master/files/thunder.mp3'],
     volume: 0.5
   });
 }
